@@ -162,38 +162,34 @@ exports.fetchURI = async (
   return;
 };
 
-// exports function fetchMimeType(
-//   uri: string,
-//   { timeout }: FetchOptions = {},
-//   defaultType?: string,
-// ): Promise<string | undefined> {
-//   if (uri.startsWith('data:')) {
-//     const parsedUri = parseDataUri(uri)
-//     if (parsedUri) {
-//       return parsedUri.mime
-//     }
-//     throw new Error('Cannot parse data uri')
-//   }
-//   // TODO(iain): Change include to endsWith
-//   if (uri.includes('.jpeg') || uri.includes('.jpg')) {
-//     return 'image/jpeg'
-//   }
-//   if (uri.includes('.png')) {
-//     return 'image/png'
-//   }
-//   try {
-//     const resp = await fetchWithRetriesAndTimeout(uri, {
-//       method: 'HEAD',
-//       timeout,
-//     })
+exports.fetchMimeType = async (uri, timeout, defaultType) => {
+  if (uri.startsWith("data:")) {
+    const parsedUri = parseDataUri(uri);
+    if (parsedUri) {
+      return parsedUri.mime;
+    }
+    throw new Error("Cannot parse data uri");
+  }
+  // TODO(iain): Change include to endsWith
+  if (uri.includes(".jpeg") || uri.includes(".jpg")) {
+    return "image/jpeg";
+  }
+  if (uri.includes(".png")) {
+    return "image/png";
+  }
+  try {
+    const resp = await fetchWithRetriesAndTimeout(uri, {
+      method: "HEAD",
+      timeout,
+    });
 
-//     return resp.headers['content-type'] || undefined
-//   } catch (e: any) {
-//     console.warn(
-//       `Failed to fetch mimetype for uri: ${uri} because: ${
-//         e?.message || 'Unknown Error occurred'
-//       }`,
-//     )
-//     return defaultType
-//   }
-// }
+    return resp.headers["content-type"] || undefined;
+  } catch (e) {
+    console.warn(
+      `Failed to fetch mimetype for uri: ${uri} because: ${
+        e?.message || "Unknown Error occurred"
+      }`
+    );
+    return defaultType;
+  }
+};
