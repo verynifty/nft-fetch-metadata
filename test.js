@@ -13,10 +13,10 @@ console.log(
 const fetch = new Fetcher();
 
 (async function () {
-  const staticURI = await fetch.fetchTokenURI(
+  const uri = await fetch.fetchTokenURI(
     "0xe4605d46fd0b3f8329d936a8b258d69276cba264",
     "32"
   );
 
-  console.log(staticURI);
+  console.log(uri);
 })();
