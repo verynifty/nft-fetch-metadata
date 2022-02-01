@@ -12,15 +12,3 @@ exports.isIPFS = (uri) => {
 exports.convertToGateway = (sourceUrl, desiredGatewayPrefix) => {
 	return gatewayTools.convertToDesiredGateway(sourceUrl, desiredGatewayPrefix);
 };
-
-// list of ipgsGateways to try
-exports.ipfsGateways = [
-	"https://ipfs.io",
-	"https://cloudflare-ipfs.com",
-	"https://ipfs.infura.io",
-	"https://gateway.pinata.cloud",
-	"https://ipfs.eth.aragon.network",
-	"https://ipfs.fleek.co",
-	"http://ipfs.anonymize.com",
-	"https://crustwebsites.net",
-];
