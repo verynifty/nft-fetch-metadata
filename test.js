@@ -1,6 +1,6 @@
 const { isIPFS, getStaticURI } = require("./uri");
 
-const Fetcher = require("./index2.js");
+const Fetcher = require("./index.js");
 
 console.log(
   `is IPFS? ${isIPFS(
