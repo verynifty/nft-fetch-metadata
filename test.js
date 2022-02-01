@@ -12,9 +12,11 @@ console.log(
 
 const fetch = new Fetcher();
 
-const staticURI = fetch.fetchTokenURI(
-  "0x57f1887a8bf19b14fc0df6fd9b2acc9af147ea85",
-  "11764840363253722354683532865519887665924940699905515008880686154051310419621"
-);
+(async function () {
+  const staticURI = await fetch.fetchTokenURI(
+    "0xe4605d46fd0b3f8329d936a8b258d69276cba264",
+    "32"
+  );
 
-console.log(staticURI);
+  console.log(staticURI);
+})();

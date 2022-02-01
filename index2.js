@@ -9,9 +9,16 @@ const {
   IPFS_CLOUDFLARE_GATEWAY,
 } = require("./constants/providers");
 
+const {
+  ERC721_TOKEN_TYPE,
+  ERC1155_TOKEN_TYPE,
+} = require("./constants/token-types");
+
 const { getStaticURI, getAlternateContractCall } = require("./uri");
 
 const { Contract } = require("ethers");
+
+const ERC721ABI = require("./abis/erc721.json");
 
 function Fetcher(
   timeout,
@@ -43,6 +50,9 @@ Fetcher.prototype.fetchTokenURI = async function (tokenAddress, tokenId) {
   if (staticURI) {
     return staticURI;
   }
+
+  console.log("after static uri");
+
   const alternateMethod = await getAlternateContractCall(
     this.provider.network.name,
     tokenAddress,
@@ -54,8 +64,10 @@ Fetcher.prototype.fetchTokenURI = async function (tokenAddress, tokenId) {
   }
 
   try {
-    const erc721Contract = Erc721Factory.connect(tokenAddress, this.provider);
-    const uri = await erc721Contract.tokenURI(tokenId);
+    const contract = new Contract(tokenAddress, ERC721ABI, this.provider);
+
+    const uri = await contract.tokenURI(tokenId);
+
     return {
       uri,
       type: ERC721_TOKEN_TYPE,
