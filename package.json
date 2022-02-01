@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@pinata/ipfs-gateway-tools": "^1.1.6"
+    "@ethersproject/address": "^5.5.0",
+    "@ethersproject/providers": "^5.5.3",
+    "@pinata/ipfs-gateway-tools": "^1.1.6",
+    "ethers": "^5.5.4"
   }
 }

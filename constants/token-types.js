@@ -1,0 +1,2 @@
+exports.ERC721_TOKEN_TYPE = "ERC721";
+exports.ERC1155_TOKEN_TYPE = "ERC1155";
