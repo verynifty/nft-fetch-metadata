@@ -60,7 +60,11 @@ exports.fetchWithTimeout = (resource, options) => {
   });
 };
 
-exports.fetchWithRetriesAndTimeout = (resource, options, maxRetries = 5) => {
+exports.fetchWithRetriesAndTimeout = async (
+  resource,
+  options,
+  maxRetries = 5
+) => {
   axiosRetry(axios, {
     retryDelay: axiosRetry.exponentialDelay,
     retries: maxRetries,
@@ -125,7 +129,12 @@ async function multiAttemptIPFSFetch(
   }
 }
 
-exports.fetchURI = (uri, options, ipfsGateway, ipfsFallbackGatewayUrl) => {
+exports.fetchURI = async (
+  uri,
+  options,
+  ipfsGateway,
+  ipfsFallbackGatewayUrl
+) => {
   if (isArweave(uri)) {
     const resp = await fetchARWeaveWithTimeout(uri, options);
     return resp?.data;
