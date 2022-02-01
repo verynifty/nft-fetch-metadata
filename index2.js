@@ -3,14 +3,43 @@ const {
   StaticJsonRpcProvider,
 } = require("@ethersproject/providers");
 
+const {
+  CLOUDFLARE_RPC_DEFAULT,
+  IPFS_IO_GATEWAY,
+  IPFS_CLOUDFLARE_GATEWAY,
+} = require("./constants/providers");
+
+const { getStaticURI, getAlternateContractCall } = require("./uri");
+
 const { Contract } = require("ethers");
 
-function fetchTokenURI(tokenAddress, tokenId) {
+function Fetcher(
+  timeout,
+  ipfsGatewayUrl,
+  ipfsFallbackGatewayUrl,
+  provider,
+  network
+) {
+  this.network = network || "mainnet";
+
+  this.ipfsGatewayUrl = ipfsGatewayUrl || IPFS_IO_GATEWAY;
+  this.ipfsFallbackGatewayUrl =
+    ipfsFallbackGatewayUrl || IPFS_CLOUDFLARE_GATEWAY;
+  this.timeout = timeout || 40000;
+
+  this.provider = new StaticJsonRpcProvider(
+    this.networkUrl || CLOUDFLARE_RPC_DEFAULT,
+    this.network
+  );
+}
+
+Fetcher.prototype.fetchTokenURI = async function (tokenAddress, tokenId) {
   const staticURI = getStaticURI(
     this.provider.network.name,
     tokenAddress,
     tokenId
   );
+
   if (staticURI) {
     return staticURI;
   }
@@ -48,5 +77,7 @@ function fetchTokenURI(tokenAddress, tokenId) {
   } catch (e) {
     // if this fails, fail function
   }
-  throw new ChainFetchError("Cannot fetch uri from contract");
-}
+  throw new Error("Cannot fetch uri from contract");
+};
+
+module.exports = Fetcher;

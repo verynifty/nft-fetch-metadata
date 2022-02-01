@@ -1,3 +1,5 @@
+exports.HOMESTEAD = "homestead";
+
 exports.ROPSTEN = "ropsten";
-exports.MAINNET = "mainnet";
+exports.MAINNET = "homestead";
 exports.RINKEBY = "rinkeby";
