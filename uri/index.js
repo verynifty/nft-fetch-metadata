@@ -1,4 +1,9 @@
-const { isIPFS, convertToGateway } = require("./ipfs.js");
+const {
+  isIPFS,
+  hasIpfsPrefix,
+  getIPFSUrl,
+  getPrivateGateway,
+} = require("./ipfs.js");
 const { isArweave, hasArPrefix, getARWeaveURI } = require("./arweave.js");
 
 const { getStaticURI } = require("./static.js");
@@ -14,8 +19,7 @@ const {
 } = require("./fetch");
 
 module.exports = {
-  isIPFS,
-  convertToGateway,
+  // convertToGateway,
   isArweave,
   hasArPrefix,
   getARWeaveURI,
@@ -26,4 +30,8 @@ module.exports = {
   fetchWithRetriesAndTimeout,
   fetchWithTimeout,
   parseDataUri,
+  isIPFS,
+  hasIpfsPrefix,
+  getIPFSUrl,
+  getPrivateGateway,
 };
