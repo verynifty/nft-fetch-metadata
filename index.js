@@ -21,6 +21,7 @@ const {
   getAlternateContractCall,
   getIPFSUrl,
   getPrivateGateway,
+  createDataURI,
 } = require("./uri");
 
 const { Contract } = require("ethers");

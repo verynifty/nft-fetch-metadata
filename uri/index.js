@@ -18,6 +18,8 @@ const {
   parseDataUri,
 } = require("./fetch");
 
+const { createDataURI } = require("./data.js");
+
 module.exports = {
   // convertToGateway,
   isArweave,
@@ -34,4 +36,5 @@ module.exports = {
   hasIpfsPrefix,
   getIPFSUrl,
   getPrivateGateway,
+  createDataURI,
 };
