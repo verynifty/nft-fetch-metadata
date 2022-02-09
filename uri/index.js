@@ -20,6 +20,8 @@ const {
 
 const { createDataURI } = require("./data.js");
 
+const { getViaAlchemy } = require("./alchemy.js");
+
 module.exports = {
   // convertToGateway,
   isArweave,
@@ -37,4 +39,5 @@ module.exports = {
   getIPFSUrl,
   getPrivateGateway,
   createDataURI,
+  getViaAlchemy,
 };

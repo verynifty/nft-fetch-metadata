@@ -3,6 +3,8 @@ const axiosRetry = require("axios-retry");
 
 const { getIPFSUrl, isIPFS } = require("./ipfs");
 
+const { getViaAlchemy } = require("./alchemy.js"); //for alchemy if all else fails
+
 const {
   IPFS_CLOUDFLARE_GATEWAY,
   IPFS_IO_GATEWAY,
@@ -195,4 +197,3 @@ exports.fetchMimeType = async (uri, timeout, defaultType) => {
 };
 
 // TODO for if all else fails
-exports.fetchFromAlchemy = async function () {};

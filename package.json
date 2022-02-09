@@ -10,11 +10,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@alch/alchemy-web3": "^1.2.3",
     "@ethersproject/address": "^5.5.0",
     "@ethersproject/providers": "^5.5.3",
     "@pinata/ipfs-gateway-tools": "^1.1.6",
     "axios": "^0.25.0",
     "axios-retry": "^3.2.4",
+    "dotenv": "^16.0.0",
     "ethers": "^5.5.4"
   }
 }
