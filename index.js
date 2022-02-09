@@ -3,6 +3,8 @@ const {
   StaticJsonRpcProvider,
 } = require("@ethersproject/providers");
 
+const { getAddress } = require("@ethersproject/address");
+
 const {
   CLOUDFLARE_RPC_DEFAULT,
   IPFS_IO_GATEWAY,
@@ -14,7 +16,12 @@ const {
   ERC1155_TOKEN_TYPE,
 } = require("./constants/token-types");
 
-const { getStaticURI, getAlternateContractCall, getIPFSUrl } = require("./uri");
+const {
+  getStaticURI,
+  getAlternateContractCall,
+  getIPFSUrl,
+  getPrivateGateway,
+} = require("./uri");
 
 const { Contract } = require("ethers");
 
@@ -191,6 +198,53 @@ exports.parseURIData = async function (
     ...(attributes && { attributes }),
     ...(externalURL && { externalURL }),
   };
+};
+
+exports.fetchMetadata = async function (rawAddress, tokenId) {
+  const tokenAddress = getAddress(rawAddress);
+  try {
+    const uriFetchResult = await this.fetchTokenURI(tokenAddress, tokenId);
+    const { uri: tokenURI, type: tokenType } = uriFetchResult;
+
+    const ipfsGateway =
+      getPrivateGateway(this.provider.network.name, tokenAddress) ||
+      this.ipfsGatewayUrl;
+
+    const URIData = await this.fetchURIData(
+      tokenAddress,
+      tokenId,
+      tokenURI,
+      ipfsGateway
+    );
+    // console.log('fetched uri data: ', { URIData })
+
+    const metadata = await this.parseURIData(
+      tokenAddress,
+      tokenId,
+      tokenURI,
+      URIData,
+      ipfsGateway
+    );
+    // console.log('parsed metadata: ', { metadata })
+
+    return {
+      tokenId,
+      tokenAddress,
+      metadata: URIData,
+      tokenURI,
+      tokenType,
+      ...metadata,
+    };
+  } catch (err) {
+    if (err) {
+      console.error(err);
+      throw new Error(
+        `Failed to get tokenURI token: ${tokenAddress} is unsupported by @zoralabs/nft-metadata`
+      );
+    }
+    throw err;
+  }
+  // console.log('fetched uri: ', { tokenURI, tokenType })
 };
 
 module.exports = Fetcher;
