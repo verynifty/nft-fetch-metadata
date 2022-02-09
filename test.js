@@ -25,5 +25,5 @@ const fetch = new Fetcher();
     "5448"
   );
 
-  console.log("alchemy", alchemy.media);
+  console.log("alchemy", alchemy);
 })();
