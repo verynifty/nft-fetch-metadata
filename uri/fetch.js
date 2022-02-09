@@ -193,3 +193,6 @@ exports.fetchMimeType = async (uri, timeout, defaultType) => {
     return defaultType;
   }
 };
+
+// TODO for if all else fails
+exports.fetchFromAlchemy = async function () {};
