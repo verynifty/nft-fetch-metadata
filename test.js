@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const { isIPFS, getStaticURI, getViaAlchemy } = require("./uri");
 
 const Fetcher = require("./index.js");
@@ -11,20 +13,27 @@ console.log(
 // test getStatic url
 
 (async function () {
-  const fetch = new Fetcher();
+  const rpc = `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY}`;
 
-  const metadata = await fetch.fetchMetadata(
-    "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
-    "32"
-  );
-  console.log(metadata);
+  let options = [, , , , rpc]; //Think it is a dynamic array on run time or compile time
 
-  process.exit();
+  const fetch = new Fetcher(...options);
+
+  for (var i = 0; i < 20; i++) {
+    const nft = await fetch.fetchMetadata(
+      "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+      i
+    );
+
+    console.log("token Id", i);
+    console.log(nft.metadata.image);
+  }
+
   // const alchemy = await getViaAlchemy(
   //   "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
   //   "5448"
   // );
   // console.log("alchemy", alchemy);
 
-  return true;
+  process.exit();
 })();

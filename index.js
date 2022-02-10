@@ -38,6 +38,7 @@ function Fetcher(
   ipfsGatewayUrl,
   ipfsFallbackGatewayUrl,
   provider,
+  networkUrl,
   network
 ) {
   this.network = network || "mainnet";
@@ -48,7 +49,7 @@ function Fetcher(
   this.timeout = timeout || 40000;
 
   this.provider = new StaticJsonRpcProvider(
-    this.networkUrl || CLOUDFLARE_RPC_DEFAULT,
+    networkUrl || CLOUDFLARE_RPC_DEFAULT,
     this.network
   );
 }
@@ -79,9 +80,6 @@ Fetcher.prototype.fetchTokenURI = async function (tokenAddress, tokenId) {
 
     const symbol = await contract.symbol();
 
-    console.log("uri ", symbol);
-    console.log("tokenId", tokenId);
-
     const uri = await contract.tokenURI(tokenId);
 
     return {
@@ -103,6 +101,7 @@ Fetcher.prototype.fetchTokenURI = async function (tokenAddress, tokenId) {
     }
     return { uri, type: ERC1155_TOKEN_TYPE };
   } catch (e) {
+    // console.log(e);
     // if this fails, fail function
   }
   throw new Error("Cannot fetch uri from contract");
