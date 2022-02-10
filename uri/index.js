@@ -6,7 +6,7 @@ const {
 } = require("./ipfs.js");
 const { isArweave, hasArPrefix, getARWeaveURI } = require("./arweave.js");
 
-const { getStaticURI } = require("./static.js");
+const { getStaticURI, getURIData } = require("./static.js");
 
 const { getAlternateContractCall } = require("./contract");
 
@@ -40,4 +40,5 @@ module.exports = {
   getPrivateGateway,
   createDataURI,
   getViaAlchemy,
+  getURIData,
 };

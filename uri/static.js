@@ -1,5 +1,9 @@
 const { isAddressMatch } = require("../utils/addresses");
-const { ENS_TOKEN_ADDRESS } = require("../constants/addresses");
+const {
+  ENS_TOKEN_ADDRESS,
+  WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
+  AUTOGLYPHS_TOKEN_ADDRESS,
+} = require("../constants/addresses");
 const { ERC721_TOKEN_TYPE } = require("../constants/token-types");
 
 exports.getStaticURI = (chainName, tokenAddress, tokenId) => {

@@ -45,8 +45,8 @@ exports.getPrivateGateway = (chainName, tokenAddress) => {
   if (isAddressMatch(chainName, tokenAddress, FOUNDATION_TOKEN_ADDRESS)) {
     return "https://ipfs.foundation.app";
   }
-  if (isAddressMatch(chainName, tokenAddress, ZORA_TOKEN_ADDRESS)) {
-    return "https://zora-prod.mypinata.cloud";
-  }
+  // if (isAddressMatch(chainName, tokenAddress, ZORA_TOKEN_ADDRESS)) {
+  //   return "https://zora-prod.mypinata.cloud";
+  // }
   return;
 };

@@ -16,12 +16,16 @@ const {
   ERC1155_TOKEN_TYPE,
 } = require("./constants/token-types");
 
+const { fetchOnChainData } = require("./metadata");
+
 const {
   getStaticURI,
   getAlternateContractCall,
   getIPFSUrl,
   getPrivateGateway,
   createDataURI,
+  getURIData,
+  fetchURI,
 } = require("./uri");
 
 const { Contract } = require("ethers");
@@ -59,8 +63,6 @@ Fetcher.prototype.fetchTokenURI = async function (tokenAddress, tokenId) {
     return staticURI;
   }
 
-  console.log("after static uri");
-
   const alternateMethod = await getAlternateContractCall(
     this.provider.network.name,
     tokenAddress,
@@ -73,6 +75,11 @@ Fetcher.prototype.fetchTokenURI = async function (tokenAddress, tokenId) {
 
   try {
     const contract = new Contract(tokenAddress, ERC721ABI, this.provider);
+
+    const symbol = await contract.symbol();
+
+    console.log("uri ", symbol);
+    console.log("tokenId", tokenId);
 
     const uri = await contract.tokenURI(tokenId);
 

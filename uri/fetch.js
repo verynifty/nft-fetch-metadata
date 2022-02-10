@@ -12,7 +12,7 @@ const {
 
 const { getARWeaveURI, isArweave } = require("./arweave");
 
-exports.isValidHttpUrl = (uri) => {
+const isValidHttpUrl = (uri) => {
   try {
     let url = new URL(uri);
     return url.protocol === "http:" || url.protocol === "https:";
@@ -62,11 +62,7 @@ exports.fetchWithTimeout = (resource, options) => {
   });
 };
 
-exports.fetchWithRetriesAndTimeout = async (
-  resource,
-  options,
-  maxRetries = 5
-) => {
+fetchWithRetriesAndTimeout = async (resource, options, maxRetries = 5) => {
   axiosRetry(axios, {
     retryDelay: axiosRetry.exponentialDelay,
     retries: maxRetries,

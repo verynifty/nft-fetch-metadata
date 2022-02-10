@@ -11,28 +11,29 @@ function encodeUriData(dataUri) {
   );
 }
 
-exports.fetchPunkAttributes = function (tokenAddress, tokenId, provider) {
-  const PunksDataContract = new Contract(
-    tokenAddress,
-    [
-      "function punkAttributes(uint16 index) public view returns (string memory)",
-      "function punkImageSvg(uint16 index) public view returns (string memory)",
-    ],
-    provider
-  );
-  const [type, ...accessories] = (
-    await PunksDataContract.punkAttributes(tokenId)
-  ).split(",");
-  const imageRaw = await PunksDataContract.punkImageSvg(tokenId);
+// exports.fetchPunkAttributes = function (tokenAddress, tokenId, provider) {
+//   const PunksDataContract = new Contract(
+//     tokenAddress,
+//     [
+//       "function punkAttributes(uint16 index) public view returns (string memory)",
+//       "function punkImageSvg(uint16 index) public view returns (string memory)",
+//     ],
+//     provider
+//   );
 
-  return {
-    image: encodeUriData(imageRaw),
-    attributes: [
-      { trait_type: "Type", value: type },
-      ...accessories.map((accessory) => ({
-        trait_type: "Accessory",
-        value: accessory,
-      })),
-    ],
-  };
-};
+//   const [type, ...accessories] = (
+//     await PunksDataContract.punkAttributes(tokenId)
+//   ).split(",");
+//   const imageRaw = await PunksDataContract.punkImageSvg(tokenId);
+
+//   return {
+//     image: encodeUriData(imageRaw),
+//     attributes: [
+//       { trait_type: "Type", value: type },
+//       ...accessories.map((accessory) => ({
+//         trait_type: "Accessory",
+//         value: accessory,
+//       })),
+//     ],
+//   };
+// };

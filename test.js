@@ -14,7 +14,7 @@ const fetch = new Fetcher();
 
 (async function () {
   const uri = await fetch.fetchMetadata(
-    "0xe4605d46fd0b3f8329d936a8b258d69276cba264",
+    "0x86c10d10eca1fca9daf87a279abccabe0063f247",
     "32"
   );
   console.log(uri);

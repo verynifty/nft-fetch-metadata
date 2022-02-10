@@ -11,7 +11,7 @@ const { isAddressMatch } = require("../utils/addresses");
 const { fetchZoraMeta } = require("./zora");
 const { fetchHashmaskMeta } = require("./hashmasks");
 const { fetchLootMeta } = require("./loot");
-const { fetchPunkAttributes } = require("./punks");
+// const { fetchPunkAttributes } = require("./punks");
 const { fetchAutoglyphsMeta } = require("./autoglyphs");
 
 exports.fetchOnChainData = (networkName, tokenAddress, tokenId, provider) => {
@@ -24,7 +24,7 @@ exports.fetchOnChainData = (networkName, tokenAddress, tokenId, provider) => {
   if (
     isAddressMatch(networkName, tokenAddress, WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS)
   ) {
-    return fetchPunkAttributes(tokenAddress, tokenId, provider);
+    // return fetchPunkAttributes(tokenAddress, tokenId, provider);
   }
   if (isAddressMatch(networkName, tokenAddress, ZORA_TOKEN_ADDRESS)) {
     return fetchZoraMeta(tokenAddress, tokenId, provider);

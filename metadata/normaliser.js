@@ -34,7 +34,7 @@ function normaliseAttributes(attributes) {
   }
 
   if (typeof attributes === "object") {
-    return Object.keys(attributes).map((trait_type: string) => ({
+    return Object.keys(attributes).map((trait_type) => ({
       value: attributes[trait_type],
       trait_type,
     }));
@@ -75,7 +75,7 @@ exports.normaliseURIData = function (chainName, tokenAddress, data) {
 
   if (isAddressMatch(chainName, tokenAddress, POTION_ART_TOKEN_ADDRESS)) {
     normalisedData = Object.entries(normalisedData.properties).reduce(
-      (last: any, [key, value]: any) => {
+      (last, [key, value]) => {
         last[key] = value.description;
         return last;
       },
