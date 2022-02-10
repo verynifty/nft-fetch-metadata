@@ -126,7 +126,7 @@ Fetcher.prototype.fetchURIData = async function (
   return resp;
 };
 
-exports.parseURIData = async function (
+Fetcher.prototype.parseURIData = async function (
   tokenAddress,
   tokenId,
   tokenURI,
@@ -201,7 +201,7 @@ exports.parseURIData = async function (
   };
 };
 
-exports.fetchMetadata = async function (rawAddress, tokenId) {
+Fetcher.prototype.fetchMetadata = async function (rawAddress, tokenId) {
   const tokenAddress = getAddress(rawAddress);
   try {
     const uriFetchResult = await this.fetchTokenURI(tokenAddress, tokenId);

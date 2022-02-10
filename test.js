@@ -13,17 +13,14 @@ console.log(
 const fetch = new Fetcher();
 
 (async function () {
-  // const uri = await fetch.fetchTokenURI(
-  //   "0xe4605d46fd0b3f8329d936a8b258d69276cba264",
-  //   "32"
-  // );
-
-  // console.log(uri);
-
-  const alchemy = await getViaAlchemy(
-    "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
-    "5448"
+  const uri = await fetch.fetchMetadata(
+    "0xe4605d46fd0b3f8329d936a8b258d69276cba264",
+    "32"
   );
-
-  console.log("alchemy", alchemy);
+  console.log(uri);
+  // const alchemy = await getViaAlchemy(
+  //   "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  //   "5448"
+  // );
+  // console.log("alchemy", alchemy);
 })();
