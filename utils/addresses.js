@@ -1,5 +1,5 @@
 const { getAddress } = require("@ethersproject/address");
-const { ethers, utils } = require("ethers");
+const { BigNumber, ethers, utils } = require("ethers");
 
 exports.isAddressMatch = (chainName, address, addressByNetwork) => {
   if (!addressByNetwork[chainName]) {
@@ -10,11 +10,6 @@ exports.isAddressMatch = (chainName, address, addressByNetwork) => {
 
 exports.normalizeTokenID1155 = (tokenId) => {
   return utils
-    .hexlify(
-      utils.zeroPad(
-        utils.arrayify(ethers.BigNumber.from(tokenId).toHexString()),
-        64
-      )
-    )
-    .substr(4);
+    .hexZeroPad(utils.arrayify(BigNumber.from(tokenId)), 32)
+    .replace("0x", "");
 };
