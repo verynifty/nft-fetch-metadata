@@ -1,5 +1,21 @@
 let networks = require("./networks");
 
+const {
+  media: ZORA_MEDIA_ADDRESS_MAINNET,
+} = require("@zoralabs/core/dist/addresses/1.json");
+const {
+  media: ZORA_MEDIA_ADDRESS_ROPSTEN,
+} = require("@zoralabs/core/dist/addresses/3.json");
+const {
+  media: ZORA_MEDIA_ADDRESS_RINKEBY,
+} = require("@zoralabs/core/dist/addresses/4.json");
+const {
+  media: ZORA_MEDIA_ADDRESS_MUMBAI,
+} = require("@zoralabs/core/dist/addresses/80001.json");
+const {
+  media: ZORA_MEDIA_ADDRESS_POLYGON,
+} = require("@zoralabs/core/dist/addresses/137.json");
+
 exports.SUPERRARE_TOKEN_ADDRESS = {
   [networks.MAINNET]: "0xb932a70A57673d89f4acfFBE830E8ed7f75Fb9e0",
 };
@@ -56,4 +72,12 @@ exports.LOOT_TOKEN_ADDRESS = {
 
 exports.AUTOGLYPHS_TOKEN_ADDRESS = {
   [networks.MAINNET]: "0xd4e4078ca3495DE5B1d4dB434BEbc5a986197782",
+};
+
+exports.ZORA_TOKEN_ADDRESS = {
+  [networks.MAINNET]: ZORA_MEDIA_ADDRESS_MAINNET,
+  [networks.ROPSTEN]: ZORA_MEDIA_ADDRESS_ROPSTEN,
+  [networks.RINKEBY]: ZORA_MEDIA_ADDRESS_RINKEBY,
+  [networks.POLYGON]: ZORA_MEDIA_ADDRESS_POLYGON,
+  [networks.MUMBAI]: ZORA_MEDIA_ADDRESS_MUMBAI,
 };

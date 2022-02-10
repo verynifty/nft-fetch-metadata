@@ -21,14 +21,14 @@ exports.fetchOnChainData = (networkName, tokenAddress, tokenId, provider) => {
   if (isAddressMatch(networkName, tokenAddress, HASHMASKS_TOKEN_ADDRESS)) {
     return fetchHashmaskMeta(tokenAddress, tokenId, provider);
   }
-  if (
-    isAddressMatch(networkName, tokenAddress, WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS)
-  ) {
-    // return fetchPunkAttributes(tokenAddress, tokenId, provider);
-  }
-  if (isAddressMatch(networkName, tokenAddress, ZORA_TOKEN_ADDRESS)) {
-    return fetchZoraMeta(tokenAddress, tokenId, provider);
-  }
+  // if (
+  //   isAddressMatch(networkName, tokenAddress, WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS)
+  // ) {
+  //   // return fetchPunkAttributes(tokenAddress, tokenId, provider);
+  // }
+  // if (isAddressMatch(networkName, tokenAddress, ZORA_TOKEN_ADDRESS)) {
+  //   return fetchZoraMeta(tokenAddress, tokenId, provider);
+  // }
   if (isAddressMatch(networkName, tokenAddress, LOOT_TOKEN_ADDRESS)) {
     return fetchLootMeta(tokenAddress, tokenId, provider);
   }

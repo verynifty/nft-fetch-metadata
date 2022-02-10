@@ -32,9 +32,10 @@ exports.hasIpfsPrefix = (uri) => {
 };
 
 exports.getIPFSUrl = (uri, gateway) => {
-  if (isIPFS(uri)) {
+  if (this.isIPFS(uri)) {
     return gatewayTools.convertToDesiredGateway(uri, gateway);
   }
+
   return uri;
 };
 

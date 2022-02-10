@@ -16,7 +16,7 @@ const {
   ERC1155_TOKEN_TYPE,
 } = require("./constants/token-types");
 
-const { fetchOnChainData } = require("./metadata");
+const { fetchOnChainData, normaliseURIData } = require("./metadata");
 
 const {
   getStaticURI,
@@ -25,6 +25,7 @@ const {
   getPrivateGateway,
   createDataURI,
   getURIData,
+  fetchMimeType,
   fetchURI,
 } = require("./uri");
 
