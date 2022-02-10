@@ -15,11 +15,11 @@ console.log(
 (async function () {
   const rpc = `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY}`;
 
-  let options = [, , , , rpc]; //Think it is a dynamic array on run time or compile time
+  let options = [, , , , rpc];
 
   const fetch = new Fetcher(...options);
 
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < 50; i++) {
     const nft = await fetch.fetchMetadata(
       "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
       i
