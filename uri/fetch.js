@@ -152,7 +152,7 @@ exports.fetchURI = async (
     return resp?.data;
   }
 
-  const inlineJsonBody = parseDataUri(uri);
+  const inlineJsonBody = module.exports.parseDataUri(uri);
   if (inlineJsonBody && inlineJsonBody.mime.startsWith("application/json")) {
     return JSON.parse(inlineJsonBody.body);
   }
@@ -162,7 +162,7 @@ exports.fetchURI = async (
 
 exports.fetchMimeType = async (uri, timeout, defaultType) => {
   if (uri.startsWith("data:")) {
-    const parsedUri = parseDataUri(uri);
+    const parsedUri = module.exports.parseDataUri(uri);
     if (parsedUri) {
       return parsedUri.mime;
     }

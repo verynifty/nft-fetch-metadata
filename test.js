@@ -19,15 +19,22 @@ console.log(
 
   const fetch = new Fetcher(...options);
 
-  for (var i = 0; i < 50; i++) {
-    const nft = await fetch.fetchMetadata(
-      "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
-      i
-    );
+  // for (var i = 0; i < 50; i++) {
+  //   const nft = await fetch.fetchMetadata(
+  //     "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  //     i
+  //   );
 
-    console.log("token Id", i);
-    console.log(nft.metadata.image);
-  }
+  //   console.log("token Id", i);
+  //   console.log(nft.metadata.image);
+  // }
+
+  const nft = await fetch.fetchMetadata(
+    "0x4d15d2aaa891bfae0824f227f1ef1489cb4191ff",
+    "84547960308257454260890166076020185931469001129385629631576986981640198392185"
+  );
+
+  console.log(nft);
 
   // const alchemy = await getViaAlchemy(
   //   "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
