@@ -18,9 +18,13 @@ const fetch = new Fetcher();
     "32"
   );
   console.log(uri);
+
+  process.exit();
   // const alchemy = await getViaAlchemy(
   //   "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
   //   "5448"
   // );
   // console.log("alchemy", alchemy);
+
+  return true;
 })();
