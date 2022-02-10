@@ -108,7 +108,7 @@ async function multiAttemptIPFSFetch(
   }
 
   try {
-    return await fetchIPFSWithTimeout(
+    return await module.exports.fetchIPFSWithTimeout(
       uri,
       options,
       ipfsGateway || IPFS_IO_GATEWAY
@@ -116,7 +116,7 @@ async function multiAttemptIPFSFetch(
   } catch (e) {
     console.warn("Failed on initial fetch");
     if (ipfsGateway) {
-      return await fetchIPFSWithTimeout(
+      return await module.exports.fetchIPFSWithTimeout(
         uri,
         options,
         ipfsFallbackGatewayUrl || IPFS_CLOUDFLARE_GATEWAY

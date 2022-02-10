@@ -20,23 +20,26 @@ const {
 const IPFSGatewayTools = require("@pinata/ipfs-gateway-tools/dist/node");
 const gatewayTools = new IPFSGatewayTools();
 
-exports.isIPFS = function (uri) {
-  const result = gatewayTools.containsCID(uri);
-
-  // TODO - this lib is not working right so hack for now
-  return result.containsCid && (uri.includes("/ipfs/") || hasIpfsPrefix(uri));
-};
-
 exports.hasIpfsPrefix = (uri) => {
   return uri.startsWith("ipfs://");
 };
 
 exports.getIPFSUrl = (uri, gateway) => {
-  if (this.isIPFS(uri)) {
+  if (module.exports.isIPFS(uri)) {
     return gatewayTools.convertToDesiredGateway(uri, gateway);
   }
 
   return uri;
+};
+
+exports.isIPFS = function (uri) {
+  const result = gatewayTools.containsCID(uri);
+
+  // TODO - this lib is not working right so hack for now
+  return (
+    result.containsCid &&
+    (uri.includes("/ipfs/") || module.exports.hasIpfsPrefix(uri))
+  );
 };
 
 exports.getPrivateGateway = (chainName, tokenAddress) => {
