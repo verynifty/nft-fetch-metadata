@@ -262,7 +262,12 @@ Fetcher.prototype.fetchURI = async function (uri, callOptions) {
   let options = callOptions || {};
   options.timeout = this.timeout;
 
-  await fetchURI(uri, options, ipfsGateway, this.ipfsFallbackGatewayUrl);
+  const resp = await fetchURI(
+    uri,
+    options,
+    ipfsGateway,
+    this.ipfsFallbackGatewayUrl
+  );
   if (!resp) {
     throw new Error(`Failed to fetch uri data for token from: ${uri}`);
   }
