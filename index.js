@@ -111,7 +111,8 @@ Fetcher.prototype.fetchURIData = async function (
   tokenAddress,
   tokenId,
   tokenURI,
-  ipfsGateway
+  ipfsGateway,
+  callOptions = { timeout: this.timeout }
 ) {
   const alternateMethod = getURIData(
     this.provider.network.name,
@@ -123,7 +124,7 @@ Fetcher.prototype.fetchURIData = async function (
   }
   const resp = await fetchURI(
     tokenURI,
-    { timeout: this.timeout },
+    callOptions,
     ipfsGateway,
     this.ipfsFallbackGatewayUrl
   );

@@ -70,10 +70,15 @@ fetchWithRetriesAndTimeout = async (resource, options, maxRetries = 5) => {
 
   const method = options.method || "get";
 
+  const responseType = options.responseType || "json";
+  const responseEncoding = options.responseEncoding || "utf8";
+
   try {
     const response = await axios(resource, {
       timeout: options.timeout,
       method: method,
+      responseType,
+      responseEncoding,
     });
     return response;
   } catch (err) {
@@ -126,6 +131,8 @@ async function multiAttemptIPFSFetch(
     }
   }
 }
+
+// todo add option to get buffer data instead of response
 
 exports.fetchURI = async (
   uri,
