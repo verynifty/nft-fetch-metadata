@@ -256,4 +256,20 @@ Fetcher.prototype.fetchMetadata = async function (rawAddress, tokenId) {
   // console.log('fetched uri: ', { tokenURI, tokenType })
 };
 
+Fetcher.prototype.fetchURI = async function (
+  tokenURI,
+  callOptions,
+  ipfsGateway
+) {
+  let options = callOptions;
+
+  options.timeout = this.timeout;
+
+  await fetchURI(tokenURI, options, ipfsGateway, this.ipfsFallbackGatewayUrl);
+  if (!resp) {
+    throw new Error(`Failed to fetch uri data for token from: ${tokenURI}`);
+  }
+  return resp;
+};
+
 module.exports = Fetcher;
