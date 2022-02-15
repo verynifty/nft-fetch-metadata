@@ -141,7 +141,7 @@ exports.fetchURI = async (
   ipfsFallbackGatewayUrl
 ) => {
   if (isArweave(uri)) {
-    const resp = await fetchARWeaveWithTimeout(uri, options);
+    const resp = await module.exports.fetchARWeaveWithTimeout(uri, options);
     return resp?.data;
   }
   if (isIPFS(uri)) {
