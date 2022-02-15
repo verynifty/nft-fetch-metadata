@@ -274,4 +274,11 @@ Fetcher.prototype.fetchURI = async function (uri, callOptions) {
   return resp;
 };
 
+Fetcher.prototype.fetchMimeType = async function (url) {
+  const mimeType = await fetchMimeType(url, {
+    timeout: this.timeout,
+  });
+  return mimeType;
+};
+
 module.exports = Fetcher;

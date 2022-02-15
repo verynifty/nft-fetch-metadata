@@ -50,5 +50,11 @@ console.log(
   // );
   // console.log("alchemy", alchemy);
 
+  const mimeType = await fetch.fetchMimeType(
+    "https://gateway.ipfs.io/ipfs/QmUY31snq9dhBb4u1Z3HvhW88aujQiVqfiF8n7bxqU1RQa"
+  );
+
+  console.log("mimetype", mimeType);
+
   process.exit();
 })();
