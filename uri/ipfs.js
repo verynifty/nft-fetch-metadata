@@ -25,7 +25,8 @@ exports.hasIpfsPrefix = (uri) => {
 };
 
 exports.getIPFSUrl = (uri, gateway) => {
-  if (module.exports.isIPFS(uri) && !uri.includes("pinata")) {
+  // if (module.exports.isIPFS(uri) && !uri.includes("pinata")) {
+  if (module.exports.isIPFS(uri)) {
     //added case for pinata
     return gatewayTools.convertToDesiredGateway(uri, gateway);
   }
