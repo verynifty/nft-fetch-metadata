@@ -12,7 +12,7 @@ const {
 
 const { getARWeaveURI, isArweave } = require("./arweave");
 
-const isValidHttpUrl = (uri) => {
+exports.isValidHttpUrl = (uri) => {
   try {
     let url = new URL(uri);
     return url.protocol === "http:" || url.protocol === "https:";
@@ -103,7 +103,7 @@ async function multiAttemptIPFSFetch(
   ipfsGateway,
   ipfsFallbackGatewayUrl
 ) {
-  if (isValidHttpUrl(uri)) {
+  if (module.exports.isValidHttpUrl(uri)) {
     try {
       const resp = await fetchWithRetriesAndTimeout(uri, options);
       return resp;
@@ -154,7 +154,7 @@ exports.fetchURI = async (
     return resp?.data;
   }
 
-  if (isValidHttpUrl(uri)) {
+  if (module.exports.isValidHttpUrl(uri)) {
     const resp = await fetchWithRetriesAndTimeout(uri, options);
     return resp?.data;
   }

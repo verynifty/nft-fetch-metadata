@@ -1,4 +1,5 @@
 const { ARWEAVE_DEFAULT } = require("../constants/providers.js");
+const { isValidHttpUrl } = require("./fetch");
 
 exports.isArweave = (uri) => {
   const hasPrefix = uri.startsWith("ar://");
@@ -14,9 +15,8 @@ exports.getARWeaveURI = (uri) => {
     return uri.replace("ar://", ARWEAVE_DEFAULT);
   }
 
-  //   to do
-  //   if (isValidHttpUrl(uri)) {
-  //     return uri;
-  //   }
+  if (isValidHttpUrl(uri)) {
+    return uri;
+  }
   throw new Error("Cannot parse ARWeave URI");
 };
