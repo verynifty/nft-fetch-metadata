@@ -248,7 +248,7 @@ Fetcher.prototype.fetchMetadata = async function (rawAddress, tokenId) {
     if (err) {
       console.error(err);
       throw new Error(
-        `Failed to get tokenURI token: ${tokenAddress} is unsupported by @zoralabs/nft-metadata`
+        `Failed to get tokenURI token: ${tokenAddress} is unsupported by NFT-FETCH-METADATA`
       );
     }
     throw err;
