@@ -10,7 +10,7 @@ exports.hasArPrefix = (uri) => {
 };
 
 exports.getARWeaveURI = (uri) => {
-  if (hasArPrefix(uri)) {
+  if (modules.exports.hasArPrefix(uri)) {
     return uri.replace("ar://", ARWEAVE_DEFAULT);
   }
 

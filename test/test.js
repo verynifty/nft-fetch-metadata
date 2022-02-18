@@ -2,7 +2,7 @@ require("dotenv").config();
 
 const { isIPFS, getStaticURI, getViaAlchemy } = require("../uri");
 
-const Fetcher = require("nft-fetch-metadata");
+const Fetcher = require("@musedao/nft-fetch-metadata");
 
 console.log(
   `is IPFS? ${isIPFS(
@@ -15,7 +15,7 @@ console.log(
 (async function () {
   const rpc = `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY}`;
 
-  let options = [, , , , rpc];
+  let options = [10000, , , , rpc];
 
   const fetch = new Fetcher(...options);
 
@@ -27,9 +27,9 @@ console.log(
   // console.log(tokenUri);
 
   const nft = await fetch.fetchMetadata(
-    "0xff9c1b15b16263c61d017ee9f65c50e4ae0113d7", //loot
+    "0xd9f23b79810b4fa2785d3399ba0a4cbb0e42be51", //loot
     // "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d", //bored ape
-    "903"
+    "2543"
   );
 
   console.log(nft);
