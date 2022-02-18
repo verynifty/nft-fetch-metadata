@@ -1,21 +1,20 @@
 require("dotenv").config();
 
-const { isIPFS, getStaticURI, getViaAlchemy } = require("../uri");
-
 const Fetcher = require("@musedao/nft-fetch-metadata");
 
-console.log(
-  `is IPFS? ${isIPFS(
-    "https://bafybeiemxf5abjwjbikoz4mc3a3dla6ual3jsgpdr4cjr3oz3evfyavhwq.ipfs.dweb.link/wiki/"
-  )} `
-);
+const { isArweave } = require("../uri/index");
+
+// test getStatic url
+
+console.log(isArweave("https://google.com"));
 
 // test getStatic url
 
 (async function () {
-  const rpc = `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY}`;
+  let rpc = `https://eth-mainnet.alchemyapi.io/v2/${process.env.ALCHEMY}`;
+  rpc = process.env.ARBITRUM;
 
-  let options = [10000, , , , rpc];
+  let options = [, , , , rpc];
 
   const fetch = new Fetcher(...options);
 
@@ -27,9 +26,8 @@ console.log(
   // console.log(tokenUri);
 
   const nft = await fetch.fetchMetadata(
-    "0xd9f23b79810b4fa2785d3399ba0a4cbb0e42be51", //loot
-    // "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d", //bored ape
-    "2543"
+    "0x72C546FFABa89b269C4290698D8f106f05e090Fe", //loot
+    "1"
   );
 
   console.log(nft);

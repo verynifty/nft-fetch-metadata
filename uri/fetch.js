@@ -2,6 +2,7 @@ const axios = require("axios");
 const axiosRetry = require("axios-retry");
 
 const { getIPFSUrl, isIPFS } = require("./ipfs");
+const { isArweave, getARWeaveURI } = require("./arweave.js");
 
 const { getViaAlchemy } = require("./alchemy.js"); //for alchemy if all else fails
 
@@ -9,8 +10,6 @@ const {
   IPFS_CLOUDFLARE_GATEWAY,
   IPFS_IO_GATEWAY,
 } = require("../constants/providers");
-
-const { getARWeaveURI, isArweave } = require("./arweave");
 
 exports.isValidHttpUrl = (uri) => {
   try {
@@ -131,8 +130,6 @@ async function multiAttemptIPFSFetch(
     }
   }
 }
-
-// todo add option to get buffer data instead of response
 
 exports.fetchURI = async (
   uri,

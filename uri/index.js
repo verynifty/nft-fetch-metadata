@@ -4,6 +4,7 @@ const {
   getIPFSUrl,
   getPrivateGateway,
 } = require("./ipfs.js");
+
 const { isArweave, hasArPrefix, getARWeaveURI } = require("./arweave.js");
 
 const { getStaticURI, getURIData } = require("./static.js");
