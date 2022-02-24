@@ -3,6 +3,8 @@ const {
   StaticJsonRpcProvider,
 } = require("@ethersproject/providers");
 
+const { normalizeTokenID1155 } = require("./utils/addresses");
+
 const { getAddress } = require("@ethersproject/address");
 
 const {
@@ -95,6 +97,7 @@ Fetcher.prototype.fetchTokenURI = async function (tokenAddress, tokenId) {
       ["function uri(uint256 index) public view returns (string memory)"],
       this.provider
     );
+
     let uri = await erc1155Contract.uri(tokenId);
     if (uri.includes("{id}")) {
       uri = uri.replace("{id}", normalizeTokenID1155(tokenId));
