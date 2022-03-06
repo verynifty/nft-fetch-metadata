@@ -7,6 +7,8 @@ const { normalizeTokenID1155 } = require("./utils/addresses");
 
 const { getAddress } = require("@ethersproject/address");
 
+const { SVG_IMAGE_MIME_TYPE } = require("./constants/mime");
+
 const {
   CLOUDFLARE_RPC_DEFAULT,
   IPFS_IO_GATEWAY,

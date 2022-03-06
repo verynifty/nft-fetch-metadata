@@ -8,7 +8,7 @@ exports.isAddressMatch = (chainName, address, addressByNetwork) => {
   return getAddress(address) === getAddress(addressByNetwork[chainName]);
 };
 
-exports.normalizeTokenID1155 = (tokenId) => {
+exports.normalizeTokenID1155 = function (tokenId) {
   return utils
     .hexZeroPad(utils.arrayify(BigNumber.from(tokenId)), 32)
     .replace("0x", "");

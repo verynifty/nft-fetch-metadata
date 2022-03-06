@@ -26,8 +26,8 @@ console.log(isArweave("https://google.com"));
   // console.log(tokenUri);
 
   const nft = await fetch.fetchMetadata(
-    "0x6fad73936527d2a82aea5384d252462941b44042", //loot
-    "53"
+    "0x57f0b53926dd62f2e26bc40b30140abea474da94", //loot
+    "1729"
   );
 
   console.log(nft);
