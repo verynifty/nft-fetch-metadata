@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const Fetcher = require("../nft-fetch-metadata");
+const Fetcher = require("../");
 
 
 (async function () {
@@ -12,8 +12,8 @@ const Fetcher = require("../nft-fetch-metadata");
   const fetch = new Fetcher(...options);
 
   const nft = await fetch.fetchMetadata(
-    "0x8794ffb49bc980b63b92347456bb55d01c45e309", //loot
-    "106"
+    "0x63182453d97b692b51305e0ee14a6a29fbc91d2c", //loot
+    "1954"
   );
 
   console.log(nft);
