@@ -165,8 +165,17 @@ Fetcher.prototype.parseURIData = async function (
   }
 
   if (meta.image_data) {
-    meta.imageURL = createDataURI(SVG_IMAGE_MIME_TYPE, meta.image_data);
-    meta.imageURLMimeType = SVG_IMAGE_MIME_TYPE;
+    const mimeType = await fetchMimeType(meta.image_data, {
+      timeout: this.timeout,
+    });
+
+    if (mimeType == SVG_IMAGE_MIME_TYPE) {
+      meta.imageURL = createDataURI(SVG_IMAGE_MIME_TYPE, meta.image_data);
+      meta.imageURLMimeType = SVG_IMAGE_MIME_TYPE;
+    } else {
+      meta.imageURL = meta.image_data;
+      meta.imageURLMimeType = mimeType;
+    }
   }
 
   if (meta.animation_url) {
