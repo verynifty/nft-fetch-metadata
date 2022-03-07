@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const Fetcher = require("@musedao/nft-fetch-metadata");
+const Fetcher = require("../");
 
 const { isArweave } = require("../uri/index");
 
@@ -26,8 +26,8 @@ console.log(isArweave("https://google.com"));
   // console.log(tokenUri);
 
   const nft = await fetch.fetchMetadata(
-    "0x57f0b53926dd62f2e26bc40b30140abea474da94", //loot
-    "1729"
+    "0x8794ffb49bc980b63b92347456bb55d01c45e309", //loot
+    "106"
   );
 
   console.log(nft);
