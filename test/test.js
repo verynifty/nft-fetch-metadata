@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const Fetcher = require("../");
+const Fetcher = require("@musedao/nft-fetch-metadata");
 
 const { isArweave } = require("../uri/index");
 
