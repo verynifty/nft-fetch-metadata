@@ -226,7 +226,7 @@ Fetcher.prototype.parseURIData = async function (
 Fetcher.prototype.fetchMetadata = async function (
   rawAddress,
   tokenId,
-  callOptions
+  callOptions = {}
 ) {
   const tokenAddress = getAddress(rawAddress);
   try {

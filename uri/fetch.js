@@ -62,6 +62,7 @@ exports.fetchWithTimeout = (resource, options) => {
 };
 
 fetchWithRetriesAndTimeout = async (resource, options, maxRetries = 5) => {
+  console.log("calling", resource);
   axiosRetry(axios, {
     retryDelay: axiosRetry.exponentialDelay,
     retries: maxRetries,

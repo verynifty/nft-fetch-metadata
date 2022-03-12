@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const Fetcher = require("@musedao/nft-fetch-metadata");
+const Fetcher = require("../");
 
 const { isArweave } = require("../uri/index");
 
@@ -15,7 +15,7 @@ console.log(isArweave("https://google.com"));
   // rpc = process.env.ARBITRUM;
 
   const infuraIPFS = "https://ipfs.infura.io:5001/api/v0/cat?arg=";
-  let options = [, , , , rpc];
+  let options = [, infuraIPFS, , , rpc];
 
   const fetch = new Fetcher(...options);
 
@@ -33,29 +33,29 @@ console.log(isArweave("https://google.com"));
     "Basic " + Buffer.from(projectId + ":" + projectSecret).toString("base64");
 
   const nft = await fetch.fetchMetadata(
-    "0x37078802B8f4d6cDD7e8dA89bFcf3853e43Fea98", //loot
-    "1072"
-    // {
-    //   method: "post",
-    //   auth: auth,
-    //   // responseType: "arraybuffer",
-    //   // responseEncoding: "binary",
-    // }
+    "0x6ff683ea4ba14aa2a0fa3ca927b7886dba827b65", //loot
+    "3242",
+    {
+      method: "post",
+      auth: auth,
+      // responseType: "arraybuffer",
+      // responseEncoding: "binary",
+    }
   );
 
   console.log(nft);
 
-  // const alchemy = await getViaAlchemy(
-  //   "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
-  //   "5448"
+  // // const alchemy = await getViaAlchemy(
+  // //   "0xbc4ca0eda7647a8ab7c2061c2e118a18a936f13d",
+  // //   "5448"
+  // // );
+  // // console.log("alchemy", alchemy);
+
+  // const mimeType = await fetch.fetchMimeType(
+  //   "https://gateway.ipfs.io/ipfs/QmUY31snq9dhBb4u1Z3HvhW88aujQiVqfiF8n7bxqU1RQa"
   // );
-  // console.log("alchemy", alchemy);
 
-  const mimeType = await fetch.fetchMimeType(
-    "https://gateway.ipfs.io/ipfs/QmUY31snq9dhBb4u1Z3HvhW88aujQiVqfiF8n7bxqU1RQa"
-  );
-
-  console.log("mimetype", mimeType);
+  // console.log("mimetype", mimeType);
 
   process.exit();
 })();
