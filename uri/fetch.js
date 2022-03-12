@@ -72,13 +72,32 @@ fetchWithRetriesAndTimeout = async (resource, options, maxRetries = 5) => {
   const responseType = options.responseType || "json";
   const responseEncoding = options.responseEncoding || "utf8";
 
+  // const projectId = "26G4OZdP0Ez34wI9kt93aJmZv7M";
+  // const projectSecret = "cbf2236bfd2c3793086e72491a77db01";
+  // const auth =
+  //   "Basic " + Buffer.from(projectId + ":" + projectSecret).toString("base64");
+
+  const auth = options.auth || false;
+
   try {
-    const response = await axios(resource, {
-      timeout: options.timeout,
-      method: method,
+    const response = await axios({
+      method,
+      url: resource,
+      ...(auth && {
+        headers: {
+          Authorization: auth,
+        },
+      }),
       responseType,
       responseEncoding,
     });
+
+    // const response = await axios(resource, {
+    //   timeout: options.timeout,
+    //   method: method,
+    //   responseType,
+    //   responseEncoding,
+    // });
     return response;
   } catch (err) {
     const errMsg = `Exhausted retries attempting to fetch ${resource} with error: ${err.message}`;

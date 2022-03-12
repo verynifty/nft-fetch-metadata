@@ -223,7 +223,11 @@ Fetcher.prototype.parseURIData = async function (
   };
 };
 
-Fetcher.prototype.fetchMetadata = async function (rawAddress, tokenId) {
+Fetcher.prototype.fetchMetadata = async function (
+  rawAddress,
+  tokenId,
+  callOptions
+) {
   const tokenAddress = getAddress(rawAddress);
   try {
     const uriFetchResult = await this.fetchTokenURI(tokenAddress, tokenId);
@@ -237,7 +241,8 @@ Fetcher.prototype.fetchMetadata = async function (rawAddress, tokenId) {
       tokenAddress,
       tokenId,
       tokenURI,
-      ipfsGateway
+      ipfsGateway,
+      callOptions
     );
     // console.log('fetched uri data: ', { URIData })
 

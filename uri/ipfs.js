@@ -27,8 +27,15 @@ exports.hasIpfsPrefix = (uri) => {
 exports.getIPFSUrl = (uri, gateway) => {
   // if (module.exports.isIPFS(uri) && !uri.includes("pinata")) {
   if (module.exports.isIPFS(uri)) {
-    //added case for pinata
-    return gatewayTools.convertToDesiredGateway(uri, gateway);
+    //added case for infura todo later seems to work without this
+    // if (gateway.includes("infura")) {
+    //   const url = gatewayTools.convertToDesiredGateway(uri, gateway);
+    //   console.log("converted infura url", url);
+    //   return url;
+    // } else {
+    const url = gatewayTools.convertToDesiredGateway(uri, gateway);
+    return url;
+    // }
   }
 
   return uri;
