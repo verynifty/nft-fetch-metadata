@@ -131,6 +131,7 @@ async function multiAttemptIPFSFetch(
   }
 
   try {
+    options.method = "get";
     return await module.exports.fetchIPFSWithTimeout(
       uri,
       options,
@@ -139,6 +140,7 @@ async function multiAttemptIPFSFetch(
   } catch (e) {
     console.warn("Failed on initial fetch");
     if (ipfsGateway) {
+      options.method = "post"; //check this for infura
       return await module.exports.fetchIPFSWithTimeout(
         uri,
         options,
@@ -171,6 +173,7 @@ exports.fetchURI = async (
   }
 
   if (module.exports.isValidHttpUrl(uri)) {
+    options.method = "get";
     const resp = await fetchWithRetriesAndTimeout(uri, options);
     return resp?.data;
   }

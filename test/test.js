@@ -15,7 +15,7 @@ console.log(isArweave("https://google.com"));
   // rpc = process.env.ARBITRUM;
 
   const infuraIPFS = "https://ipfs.infura.io:5001/api/v0/cat?arg=";
-  let options = [, "wrong", infuraIPFS, , rpc];
+  let options = [, , infuraIPFS, , rpc];
 
   const fetch = new Fetcher(...options);
 

@@ -49,8 +49,9 @@ function Fetcher(
 
   // don't forget i swapped between default gateway and default faullback because cloudflare supports post requests as our fall back is infura
 
-  this.ipfsGatewayUrl = ipfsGatewayUrl || IPFS_CLOUDFLARE_GATEWAY;
-  this.ipfsFallbackGatewayUrl = ipfsFallbackGatewayUrl || IPFS_IO_GATEWAY;
+  this.ipfsGatewayUrl = ipfsGatewayUrl || IPFS_IO_GATEWAY;
+  this.ipfsFallbackGatewayUrl =
+    ipfsFallbackGatewayUrl || IPFS_CLOUDFLARE_GATEWAY;
 
   this.timeout = timeout || 40000;
 
