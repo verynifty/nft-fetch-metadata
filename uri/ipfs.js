@@ -34,6 +34,8 @@ exports.getIPFSUrl = (uri, gateway) => {
     //   return url;
     // } else {
     const url = gatewayTools.convertToDesiredGateway(uri, gateway);
+
+    // console.log("converted url ", url);
     return url;
     // }
   }

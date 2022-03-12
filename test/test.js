@@ -15,7 +15,7 @@ console.log(isArweave("https://google.com"));
   // rpc = process.env.ARBITRUM;
 
   const infuraIPFS = "https://ipfs.infura.io:5001/api/v0/cat?arg=";
-  let options = [, infuraIPFS, , , rpc];
+  let options = [, , infuraIPFS, , rpc];
 
   const fetch = new Fetcher(...options);
 
@@ -26,12 +26,13 @@ console.log(isArweave("https://google.com"));
 
   // console.log(tokenUri);
 
-  const projectId = process.env.PROJECT_ID;
-  const projectSecret = process.env.PROJECT_SECRET;
+  const projectId = process.env.IPFS_PROJECT_ID;
+  const projectSecret = process.env.IPFS_PROJECT_SECRET;
 
   const auth =
     "Basic " + Buffer.from(projectId + ":" + projectSecret).toString("base64");
 
+  console.log(auth);
   const nft = await fetch.fetchMetadata(
     "0x6ff683ea4ba14aa2a0fa3ca927b7886dba827b65", //loot
     "3242",
