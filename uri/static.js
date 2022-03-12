@@ -3,6 +3,7 @@ const {
   ENS_TOKEN_ADDRESS,
   WRAPPED_CRYPTOPUNKS_TOKEN_ADDRESS,
   AUTOGLYPHS_TOKEN_ADDRESS,
+  YOODLES_TOKEN_ADDRESS,
 } = require("../constants/addresses");
 const { ERC721_TOKEN_TYPE } = require("../constants/token-types");
 
@@ -15,6 +16,17 @@ exports.getStaticURI = (chainName, tokenAddress, tokenId) => {
     return {
       type: ERC721_TOKEN_TYPE,
       uri: `https://metadata.ens.domains/${ensChainName}/${tokenAddress.toLowerCase()}/${tokenId}/`,
+    };
+  }
+
+  if (isAddressMatch(chainName, tokenAddress, YOODLES_TOKEN_ADDRESS)) {
+    let ensChainName = chainName;
+    if (ensChainName == "homestead") {
+      ensChainName = "mainnet";
+    }
+    return {
+      type: ERC721_TOKEN_TYPE,
+      uri: `https://ipfs.io/ipfs/QmSKNqK6fFepmUcjKY9ghbSjeBfqZb5oEJnbTLbycHacos/${tokenId}.json/`,
     };
   }
 
