@@ -74,10 +74,7 @@ fetchWithRetriesAndTimeout = async (resource, options, maxRetries = 5) => {
   const responseType = options.responseType || "json";
   const responseEncoding = options.responseEncoding || "utf8";
 
-  // const projectId = "26G4OZdP0Ez34wI9kt93aJmZv7M";
-  // const projectSecret = "cbf2236bfd2c3793086e72491a77db01";
-  // const auth =
-  //   "Basic " + Buffer.from(projectId + ":" + projectSecret).toString("base64");
+  const timeout = options.timeout || 40000;
 
   const auth = options.auth || false;
 
@@ -91,6 +88,7 @@ fetchWithRetriesAndTimeout = async (resource, options, maxRetries = 5) => {
         },
       }),
       responseType,
+      timeout,
       responseEncoding,
     });
 
