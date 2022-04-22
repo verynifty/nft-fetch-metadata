@@ -12,7 +12,7 @@ const Fetcher = require("../");
   const fetch = new Fetcher(...options);
 
   const nft = await fetch.fetchMetadata(
-    "0x8794ffb49bc980b63b92347456bb55d01c45e309", //loot
+    "0xe3435edbf54b5126e817363900234adfee5b3cee", //loot
     "106"
   );
 
