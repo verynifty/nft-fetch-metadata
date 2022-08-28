@@ -20,5 +20,9 @@
     "dotenv": "^16.0.0",
     "ethers": "^5.5.4",
     "is-ipfs": "^6.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/verynifty/nft-fetch-metadata.git"
   }
 }
