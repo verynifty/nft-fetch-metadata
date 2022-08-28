@@ -4,6 +4,11 @@ We forked Zora's metadata fetcher architechture + adding all the features and cu
 
 Feel free to use it and contribute.
 
+
+[https://www.npmjs.com/package/@musedao/nft-fetch-metadata](https://www.npmjs.com/package/@musedao/nft-fetch-metadata)
+
+`npm install @musedao/nft-fetch-metadata`
+
 ## Example
 
 ```javascript
